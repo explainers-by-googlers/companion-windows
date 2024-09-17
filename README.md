@@ -1,6 +1,6 @@
 # Companion windows (explainer)
 
-A window may have _companion windows_ which are similar to popus, but render within the a tab (or other top-level window), and are closed if it is closed or navigates to a different origin.
+A window may have _companion windows_ which are similar to popups, but render within the a tab (or other top-level window), and are closed if it is closed or navigates to a different origin.
 
 Companion windows may be:
 * docked to the edge of the window (e.g., a "mole" on the bottom of the content area)
@@ -9,7 +9,7 @@ Companion windows may be:
 
 A companion window's history does not participate in the main browsing history (i.e., clicking the browser back button does not navigate the companion window).
 
-A companion window may not, itself, have companion windows.
+A companion window may not, itself, have companion windows. There may, however, be multiple companion windows opened by the main window.
 
 When a navigation within the origin occurs, the companion window remains. If the document no longer makes it attached, it will change to another presentation style (i.e., floating or docked). The new page can manipulate it, as can the user (e.g., to close it).
 
@@ -138,6 +138,8 @@ A companion window can be presented in several different ways, controlled by the
 * **anchored** to the document (but presented on top of it), e.g. using CSS anchor positioning
 * **inline** within the document, by using a new element which doesn't constrain the lifetime of the companion window but does define where it appears and accepts input (allowing document content to potentially overlay the companion window)
 
+Each of these may have parameters indicating the preferred edge, screen region, etc.
+
 It is unlikely that both _anchored_ and _inline_ are necessary, so one or the other should be chosen.
 
 The presentation style may influence how an author-supplied size is used, and whether the window is user-resizable. In any case, `width` and `height` properties are likely.
@@ -214,6 +216,15 @@ It also means that subsequent pages the user visits _must_ be aware of the possi
 A transparent "overlay window" over the document which stays the same between origins could work. Scripts could then use something similar to worklets' `addModule` to load script into it. It would lend a great deal of flexibility in how any persistent elements are presented and behave, and wouldn't require browsers to cover the desired use patterns; instead, authors could keep up with design trends.
 
 On the other hand, this is likely to be somewhat confusing, may cause contention between pages, long-lived memory usage, persistent bad states (potentially across reloads), and other issues.
+
+### Document picture-in-picture
+
+[Document picture-in-picture](https://developer.mozilla.org/docs/Web/API/Document_Picture-in-Picture_API) allows showing a floating auxiliary window, which is used in many related use cases, notably media ones.
+
+However, while PIP has some key differences that make it not a substitute here:
+* It is strongly linked with the document which created it, and closes when that document navigates.
+* It renders outside the content area and in fact outside the browser window, as a floating borderless window. This is sometimes desirable (allowing users to consume media while using other applications entirely), but since it's more detached from the browsing session that spawned it, spoofing and user confusion are greater concerns.
+* It requires platform support for such windows, which is not universal (notably on iOS). On the other hand, rendering additional contents inside the same content area is likely supportable on a broader range of platforms.
 
 ## References & acknowledgements
 
