@@ -27,7 +27,7 @@ companionWindows.namedItem('player')?.contentWindow?.postMessage(
 ## Participate
 - https://github.com/explainers-by-googlers/companion-windows/issues
 
-## Table of Contents [if the explainer is longer than one printed page]
+## Table of Contents
 
 <!-- Update this table of contents by running `npx doctoc README.md` -->
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
