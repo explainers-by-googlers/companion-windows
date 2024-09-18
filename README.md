@@ -78,11 +78,6 @@ The solution need not support every imaginable use of long-lived context or stat
 
 ## Use cases
 
-[Describe in detail what problems end-users are facing, which this project is trying to solve. A
-common mistake in this section is to take a web developer's or server operator's perspective, which
-makes reviewers worry that the proposal will violate [RFC 8890, The Internet is for End
-Users](https://www.rfc-editor.org/rfc/rfc8890).]
-
 ### Live news video
 
 Informed Irene is reading about current events on the website of National News. The website includes a live player showing coverage of a breaking news event, which Irene is paying some attention to while she reads the headlines. When she clicks on an article about a major scientific discovery, though, the live news video stops as the browser navigates to the next page, disrupting Irene's ability to follow the news coverage.
